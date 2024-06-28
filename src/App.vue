@@ -62,12 +62,12 @@
 
       <div class="form-group">
         <label for="">Endereço:</label>
-        <input class="form-control" type="text" v-model="senha"/>
+        <input class="form-control" type="text" v-model="endereco"/>
       </div>
 
       <div class="form-group">
         <label for="">Cidade:</label>
-        <input class="form-control" type="text" v-model="senha"/>
+        <input class="form-control" type="text" v-model="cidade"/>
       </div>
 
       <div class="form-group">
@@ -105,7 +105,7 @@
     
       <div class="form-group">
         <label for="">Hobbie:</label>
-        <input class="form-control" type="password" v-model="senha"/>
+        <input class="form-control" type="text" v-model="hobbie"/>
       </div>
     
       <div>
