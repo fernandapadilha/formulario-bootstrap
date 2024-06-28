@@ -1,177 +1,170 @@
 <script setup>
-  import { reactive, ref } from 'vue'
+  import { ref } from 'vue'
 
-  const titulo = ref('Oi VueJs!')
   const mostrarResultado = ref(false)
 
-  const categorias = [
-    {
-      id: 1,
-      nome: 'Eletrônicos'
-    },
-    {
-      id: 2,
-      nome: 'Vestuário'
-    },
-    {
-      id: 3,
-      nome: 'Brinquedos'
-    },
-    {
-      id: 4,
-      nome: 'Móveis'
-    },
-    {
-      id: 5,
-      nome: 'Alimentos'
-    },
-    {
-      id: 6,
-      nome: 'Bebidas'
-    },
-    {
-      id: 7,
-      nome: 'Informática'
-    },
-    {
-      id: 8,
-      nome: 'Papelaria'
-    }
-  ]
+  const nome = ref('');
+  const email = ref('');
+  const senha = ref('');
+  const confirmarSenha = ref('');
+  const endereco = ref('');
+  const cidade = ref('');
+  const estado = ref('');
+  const hobbie = ref('');
+  const linguagemProgramacao = ref('');
+  const biografia = ref('');
+  /* const confirmacao = ref(false);
 
-  const produto = reactive({
-    nome: '',
-    preco: 0,
-    quantidade: 0,
-    medida: '',
-    categorias: []
-  })
-
-  function formatarPreco(preco) {
-    return `R$ ${preco.toFixed(2).replace('.', ',')}`
+  function enviarFormulario() {
+    if (validarFormulario()) {
+      confirmacao.value = true;
+    } 
   }
 
-  function buscarNome(id) {
-    return categorias.find(categoria => categoria.id === id).nome
-  }
+  function validarFormulario() {
+    if (nome.value.length < 3) return false;
+    if (!email.value.includes('@')) return false;
+    if (senha.value != confirmarSenha.value) return false;
+    
+  } */
 
 </script>
 
 <template>
-  <div>
+  <div class="titulo">
     <h1>Formulário de Cadastro de Produtos</h1>
   </div>
+  
 
-  <h1>{{ titulo }}</h1>
   <div class="container d-flex flex-row gap-3">
     <div class="formulario">
-      <h2>Cadastro do produto</h2>
+      <h2>Cadastro</h2>
+
       <div class="form-group">
         <label for="">Nome:</label>
-        <input class="form-control" type="text" v-model="produto.nome" />
-      </div>
-      <div class="form-group">
-        <label for="">Preço (em reais):</label>
-        <input
-          class="form-control"
-          type="number"
-          step="0.01"
-          v-model="produto.preco"
-        />
-      </div>
-      <div class="form-group">
-        <label for="">Quantidade:</label>
-        <input
-          class="form-control"
-          type="number"
-          v-model="produto.quantidade"
-        />
+        <input class="form-control" type="text" v-model="nome" />
       </div>
 
-      <fieldset class="border p-1">
-        <legend class="float-none w-auto p-2">Unidade de medida</legend>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            value="unidade"
-            v-model="produto.medida"
-          />
-          Unidades
-        </div>
-        <div class="form-check form-check-inline">
-          <input
-            class="form-check-input"
-            type="radio"
-            value="peso"
-            v-model="produto.medida"
-          />
-          Peso
-        </div>
-      </fieldset>
-      <fieldset class="border p-1">
-        <legend class="float-none w-auto p-2">Categorias</legend>
-        <div
-          class="form-check"
-          v-for="categoria in categorias"
-          :key="categoria.id"
-        >
-          <input
-            class="form-check-input"
-            type="checkbox"
-            :value="categoria.id"
-            v-model="produto.categorias"
-          />
-          {{ categoria.nome }}
-        </div>
-      </fieldset>
-      <button
-        type="button"
-        class="btn btn-primary"
-        @click="mostrarResultado = !mostrarResultado"
-      >
-        Mostrar
-      </button>
+      <div class="form-group">
+        <label for="">Email:</label>
+        <input class="form-control" type="text" v-model="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="">Senha:</label>
+        <input class="form-control" type="password" v-model="senha"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Confirmação de senha:</label>
+        <input class="form-control" type="password" v-model="confirmarSenha"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Endereço:</label>
+        <input class="form-control" type="text" v-model="senha"/>
+      </div>
+
+      <div class="form-group">
+        <label for="">Cidade:</label>
+        <input class="form-control" type="text" v-model="senha"/>
+      </div>
+
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <select class="form-control" name="estado" id="estado" v-model.number.lazy="estado">
+          <option value="ac">Acre (AC)</option>
+          <option value="al">Alagoas (AL)</option>
+          <option value="ap">Amapá (AP)</option>
+          <option value="am">Amazônas (AM)</option>
+          <option value="ba">Bahia (BA)</option>
+          <option value="ce">Ceará (CE)</option>
+          <option value="df">Distrito Federal (DF)</option>
+          <option value="es">Espírito Santo (ES)</option>
+          <option value="go">Goiás (GO)</option>
+          <option value="ma">Maranhão (MA)</option>
+          <option value="mg">Minas Gerais (MG)</option>
+          <option value="ms">Mato Grosso do Sul (MS)</option>
+          <option value="mt">Mato Grosso (MT)</option>   
+          <option value="pa">Pará (PA)</option>
+          <option value="pb">Paraíba (PB)</option>
+          <option value="pe">Pernambuco (PE)</option>
+          <option value="pr">Paraná (PR)</option>
+          <option value="pi">Piauí (PI)</option>
+          <option value="rj">Rio de Janeiro (RJ)</option>
+          <option value="rn">Rio Grande do Norte (RN)</option>
+          <option value="ro">Rondônia (RO)</option>
+          <option value="rr">Roraima (RR)</option>
+          <option value="rs">Rio Grande do Sul (RS)</option>
+          <option value="sc">Santa Catarina (SC)</option>
+          <option value="se">Sergipe (SE)</option>
+          <option value="sp">São Paulo (SP)</option>
+          <option value="to">Tocantins (TO)</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label for="">Hobbie:</label>
+        <input class="form-control" type="password" v-model="senha"/>
+      </div>
+    
+      <div>
+        <label for="linguagemProgramacao">Linguagem de programação:</label>
+        <input class="form-control" type="text" id="linguagemProgramacao" v-model.number.lazy="linguagemProgramacao">
+      </div>
+
+      <div>
+        <label for="biografia">Biografia:</label>
+        <textarea class="form-control" name="biografia" id="biografia" cols="30" rows="10" v-model.number.lazy="biografia"></textarea> 
+      </div>
+      
+      <div>
+        <button type="button" class="btn btn-primary" @click="mostrarResultado = !mostrarResultado" >Mostrar</button>
+      </div>
+
     </div>
+
     <div v-if="mostrarResultado" class="resultado">
-      <h2>Dados do produto</h2>
-      <p>Nome: {{ produto.nome }}</p>
-      <p>Preço: {{ formatarPreco(produto.preco) }}</p>
-      <p>Em estoque: {{ produto.quantidade }}</p>
-      <p>Medida: {{ produto.medida }}</p>
-      <p>Categorias: {{ produto.categorias }}</p>
-      <h4>Categorias selecionadas:</h4>
-      <p v-for="categoria_id in produto.categorias" :key="categoria_id">
-        - {{ buscarNome(categoria_id) }}
-      </p>
+      <h2>Resultado</h2>
+      <p>Nome: {{ nome }}</p>
+      <p>Email: {{ email }}</p>
+      <p>Senha: {{ senha }}</p>
+      <p>Estado: {{ estado }}</p>
+      <p>Cidade: {{ cidade }}</p>
+      <p>Endereço: {{ endereco }}</p>
+      <p>Hobbies: {{ hobbie }}</p>
+      <p>Linguagem de programação: {{ linguagemProgramacao }}</p>
+      <p>Biografia: {{ biografia }}</p>
     </div>
+      
   </div>
-  <div class="altera-titulo">
-    <label>Informe um novo título </label>
-    <input class="form-control" type="text" v-model="titulo" />
-  </div>
+  
 </template>
 
 <style scoped>
-  .formulario,
-  .resultado {
+
+  .titulo {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .formulario, .resultado {
     width: 48%;
-    border-radius: 20px;
-    padding: 20px
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 0 5rem;
   }
 
   .formulario {
-    background-color: #d29696
+    background-color: rgb(179, 214, 243);
   }
 
   .resultado {
-    background-color: #98e0aa;
+    background-color: #dac2eb;
   }
 
-  .altera-titulo {
-    background-color: #98e0aa;
-    margin: 1rem 2rem;
-    border-radius: 20px;
-    padding: .75rem;
+  button {
+    margin: 1rem 0;
   }
+
 </style>
