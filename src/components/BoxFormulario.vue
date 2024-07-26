@@ -1,6 +1,7 @@
 <script setup>
     import { reactive } from 'vue';
-    
+    defineProps(['validacao']);
+
     const perfil = reactive({
         nome: '',
         email: '',
@@ -41,13 +42,12 @@
             { sigla: 'SE', nome: 'Sergipe' },
             { sigla: 'TO', nome: 'Tocantins' }
         ]
-    });
+    }); 
     
-
 </script>
 
 <template>
-    <div class="formulario">
+    <form v-if="!validacao" class="formulario">
       <h2>Cadastro</h2>
 
       <div class="form-group">
@@ -112,7 +112,7 @@
       <div>
         <button type="button" class="btn btn-primary" @click="$emit('envio', {...perfil})"> Mostrar </button>
       </div>
-    </div>
+    </form>
 
 </template>
 

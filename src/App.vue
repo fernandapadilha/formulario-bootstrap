@@ -1,11 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import BoxFormulario from './components/BoxFormulario.vue'
-import BoxResultado from './components/BoxResultado.vue'
-const perfil = ref({ nome: 'eduardo' })
+import { ref } from 'vue';
+import BoxFormulario from './components/BoxFormulario.vue';
+import BoxResultado from './components/BoxResultado.vue';
+const perfil = ref({ nome: '' });
+const validacao = ref(false);
 
 function enviarItem(item) {
-  Object.assign(perfil.value, item)
+  Object.assign(perfil.value, item);
+  validacao.value = !validacao.value;
 }
 
 /* const validacao = ref(false);
@@ -33,8 +35,8 @@ function enviarItem(item) {
     <h1>Formulário de Cadastro de Produtos</h1>
   </div>
 
-  <BoxFormulario @envio="enviarItem" />
-  <BoxResultado :perfil="perfil" />
+  <BoxFormulario :validacao="validacao" @envio="enviarItem" />
+  <BoxResultado :perfil="perfil" :validacao="validacao"/>
 </template>
 
 <style scoped>

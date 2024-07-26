@@ -1,9 +1,9 @@
 <script setup>
-defineProps(['perfil'])
+  defineProps(['perfil', 'validacao']);
 </script>
 
 <template>
-  <div class="resultado">
+  <section v-if="validacao" class="resultado">
     <h2>Resultado</h2>
     <p>Nome: {{ perfil.nome }}</p>
     <p>Email: {{ perfil.email }}</p>
@@ -14,7 +14,10 @@ defineProps(['perfil'])
     <p>Hobbies: {{ perfil.hobbie }}</p>
     <p>Linguagem de programação: {{ perfil.linguagemProgramacao }}</p>
     <p>Biografia: {{ perfil.biografia }}</p>
-  </div>
+    <div>
+      <button type="button" class="btn btn-primary" @click="validacao.value = !validacao.value"> Voltar </button>
+    </div>
+  </section>
 </template>
 
 <style scoped>
